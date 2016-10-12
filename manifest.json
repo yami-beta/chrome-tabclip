@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "tabclip",
+    "description": "",
+    "version": "0.0.1",
+    "browser_action": {
+        "default_icon": "images/icon.png"
+    },
+    "background": {
+        "scripts": ["dist/js/background.js"],
+        "persistent": false
+    },
+    "permissions": ["bookmarks", "tabs"]
+}
