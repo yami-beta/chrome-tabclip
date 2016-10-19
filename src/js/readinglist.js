@@ -35,9 +35,9 @@ export default class ReadingList {
   }
 
   async add(pages) {
-    const readingList = await this.getFolder(this.folderName);
+    const readingListFolder = await this.getFolder(this.folderName);
     const date = this.dateToString(new Date());
-    const dateFolder = await this.getFolder(date, readingList.id);
+    const dateFolder = await this.getFolder(date, readingListFolder.id);
 
     pages.forEach((page) => {
       chrome.bookmarks.create({
