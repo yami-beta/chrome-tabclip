@@ -1,4 +1,4 @@
-# TabClip
+# chrome-tabclip
 
 Chrome extension for bookmark selected tabs.
 
