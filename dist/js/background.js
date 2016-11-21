@@ -6948,29 +6948,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var readingList = new _readinglist2.default('_reading_list');
 
-// const iconCanvas = document.createElement('canvas');
-// iconCanvas.width = 38;
-// iconCanvas.height = 38;
-//
-// const iconContext = iconCanvas.getContext('2d');
-//
-// iconContext.fillStyle = '#333333';
-// iconContext.fillRect(2, 2, 34, 34);
-//
-// iconContext.fillStyle = '#f0f0f0';
-// iconContext.fillRect(4, 10, 30, 24);
-//
-// iconContext.beginPath();
-// iconContext.moveTo(10, 10);
-// iconContext.lineTo(12, 5);
-// iconContext.lineTo(24, 5);
-// iconContext.lineTo(26, 10);
-// iconContext.closePath();
-// iconContext.fill();
-//
-// const iconImageData = iconContext.getImageData(0, 0, 38, 38);
-// chrome.browserAction.setIcon({ imageData: iconImageData });
-
 chrome.tabs.onHighlighted.addListener(function (highlightInfo) {
   chrome.browserAction.setBadgeText({ text: String(highlightInfo.tabIds.length) });
 });
@@ -7055,7 +7032,7 @@ var ReadingList = function () {
     key: 'add',
     value: function () {
       var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(pages) {
-        var readingList, date, dateFolder;
+        var readingListFolder, date, dateFolder;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -7064,10 +7041,10 @@ var ReadingList = function () {
                 return this.getFolder(this.folderName);
 
               case 2:
-                readingList = _context.sent;
+                readingListFolder = _context.sent;
                 date = this.dateToString(new Date());
                 _context.next = 6;
-                return this.getFolder(date, readingList.id);
+                return this.getFolder(date, readingListFolder.id);
 
               case 6:
                 dateFolder = _context.sent;
