@@ -7,7 +7,7 @@
         "default_icon": "images/icon.png"
     },
     "background": {
-        "scripts": ["dist/js/background.js"],
+        "scripts": ["js/background.js"],
         "persistent": false
     },
     "permissions": ["bookmarks", "tabs"]
