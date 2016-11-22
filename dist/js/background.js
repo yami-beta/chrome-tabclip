@@ -6953,7 +6953,7 @@ chrome.tabs.onHighlighted.addListener(function (highlightInfo) {
 });
 
 chrome.browserAction.onClicked.addListener(function (currentTab) {
-  chrome.tabs.query({ highlighted: true }, function (tabs) {
+  chrome.tabs.query({ highlighted: true, currentWindow: true }, function (tabs) {
     var selectedTabs = tabs.filter(function (tab) {
       return (/^(http|https)/.test(tab.url)
       );

@@ -6,7 +6,7 @@ chrome.tabs.onHighlighted.addListener((highlightInfo) => {
 });
 
 chrome.browserAction.onClicked.addListener((currentTab) => {
-  chrome.tabs.query({ highlighted: true }, (tabs) => {
+  chrome.tabs.query({ highlighted: true, currentWindow: true }, (tabs) => {
     const selectedTabs = tabs.filter((tab) => {
       return /^(http|https)/.test(tab.url);
     });
