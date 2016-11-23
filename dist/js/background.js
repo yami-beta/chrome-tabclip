@@ -7032,7 +7032,7 @@ var ReadingList = function () {
     key: 'add',
     value: function () {
       var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(pages) {
-        var readingListFolder, date, dateFolder;
+        var readingListFolder, parentId, date, dateFolder;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -7042,23 +7042,33 @@ var ReadingList = function () {
 
               case 2:
                 readingListFolder = _context.sent;
+                parentId = readingListFolder.id;
+
+                if (!(pages.length > 1)) {
+                  _context.next = 10;
+                  break;
+                }
+
                 date = this.dateToString(new Date());
-                _context.next = 6;
+                _context.next = 8;
                 return this.getFolder(date, readingListFolder.id);
 
-              case 6:
+              case 8:
                 dateFolder = _context.sent;
 
+                parentId = dateFolder.id;
+
+              case 10:
 
                 pages.forEach(function (page) {
                   chrome.bookmarks.create({
-                    parentId: dateFolder.id,
+                    parentId: parentId,
                     url: page.url,
                     title: page.title
                   });
                 });
 
-              case 8:
+              case 11:
               case 'end':
                 return _context.stop();
             }

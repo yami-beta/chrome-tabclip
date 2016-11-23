@@ -36,12 +36,16 @@ export default class ReadingList {
 
   async add(pages) {
     const readingListFolder = await this.getFolder(this.folderName);
-    const date = this.dateToString(new Date());
-    const dateFolder = await this.getFolder(date, readingListFolder.id);
+    let parentId = readingListFolder.id;
+    if (pages.length > 1) {
+      const date = this.dateToString(new Date());
+      const dateFolder = await this.getFolder(date, readingListFolder.id);
+      parentId = dateFolder.id;
+    }
 
     pages.forEach((page) => {
       chrome.bookmarks.create({
-        parentId: dateFolder.id,
+        parentId: parentId,
         url: page.url,
         title: page.title,
       });
