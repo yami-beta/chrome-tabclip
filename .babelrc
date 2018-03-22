@@ -1,5 +1,11 @@
 {
-    "presets": ["latest"],
+    "presets": [
+      ["env", {
+        "targets": {
+          "browsers": ["last 2 Chrome versions"]
+        }
+      }]
+    ],
     "env": {
         "development": {
             "presets": ["power-assert"]
