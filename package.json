@@ -8,6 +8,7 @@
     "watch": "NODE_ENV=development npm-run-all -p watch:*",
     "build:js": "webpack",
     "build": "NODE_ENV=production npm-run-all -p build:*",
+    "lint": "eslint",
     "test": "jest"
   },
   "author": "yami-beta",
