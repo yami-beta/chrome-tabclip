@@ -1,25 +1,26 @@
-import 'babel-polyfill';
-
 export default class ReadingList {
-  constructor(folderName) {
+  constructor(chrome, folderName) {
+    this.chrome = chrome;
     this.folderName = folderName;
   }
 
   getFolder(folderName, parentId) {
     const folderOptions = {
-      title: folderName,
+      title: folderName
     };
-    if (parentId) { folderOptions.parentId = parentId; }
+    if (parentId) {
+      folderOptions.parentId = parentId;
+    }
 
-    return this.search(folderOptions)
-               .catch(() => {
-                 return this.create(folderOptions)
-               });
+    return this.search(folderOptions).catch(() => {
+      return this.create(folderOptions);
+    });
   }
 
   create(folderOptions) {
+    // eslint-disable-next-line no-unused-vars
     return new Promise((resolve, reject) => {
-      chrome.bookmarks.create(folderOptions, (bookmark) => {
+      this.chrome.bookmarks.create(folderOptions, bookmark => {
         resolve(bookmark);
       });
     });
@@ -27,10 +28,12 @@ export default class ReadingList {
 
   search(folderOptions) {
     return new Promise((resolve, reject) => {
-      chrome.bookmarks.search(folderOptions, (bookmarks) => {
-        if (bookmarks.length < 1) { reject(); }
+      this.chrome.bookmarks.search(folderOptions, bookmarks => {
+        if (bookmarks.length < 1) {
+          reject();
+        }
         return resolve(bookmarks[0]);
-      })
+      });
     });
   }
 
@@ -43,11 +46,11 @@ export default class ReadingList {
       parentId = dateFolder.id;
     }
 
-    pages.forEach((page) => {
-      chrome.bookmarks.create({
+    pages.forEach(page => {
+      this.chrome.bookmarks.create({
         parentId: parentId,
         url: page.url,
-        title: page.title,
+        title: page.title
       });
     });
   }

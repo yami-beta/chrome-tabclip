@@ -1,14 +1,10 @@
 {
-    "presets": [
-      ["env", {
-        "targets": {
-          "browsers": ["last 2 Chrome versions"]
-        }
-      }]
-    ],
-    "env": {
-        "development": {
-            "presets": ["power-assert"]
-        }
-    }
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": ["last 2 Chrome versions"]
+      },
+      "useBuiltIns": "usage"
+    }]
+  ]
 }
